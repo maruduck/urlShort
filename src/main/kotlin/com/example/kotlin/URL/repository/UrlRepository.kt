@@ -1,8 +1,10 @@
 package com.example.kotlin.URL.repository
 
+import com.example.kotlin.URL.domain.Url
+import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-class UrlRepository {
+interface UrlRepository : CrudRepository<Url, Long> {
 
 }

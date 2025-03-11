@@ -1,11 +1,17 @@
 package com.example.kotlin.URL.domain
 
-import jakarta.persistence.Column
-import jakarta.persistence.Entity
-import jakarta.persistence.Id
+import com.example.kotlin.URL.dto.UrlDto
+import jakarta.persistence.*
 
 @Entity
-class Url (
-    @Id var uuid: String?,
+data class Url (
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) var id: Long? = null,
+    @Column var uuid : String? = null,
     @Column var url : String,
-)
+    @Column var cnt : Int = 0,
+) {
+
+    fun createUUID() {
+        this.uuid = id?.toString(36);
+    }
+}
