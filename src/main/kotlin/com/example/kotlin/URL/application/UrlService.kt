@@ -17,4 +17,9 @@ class UrlService(
         savedUrl.createUUID();
         return savedUrl;
     }
+
+    fun findUrl(uuid: String): String? {
+        val saveUrl = urlRepository.findByUuid(uuid);
+        return saveUrl?.url
+    }
 }
