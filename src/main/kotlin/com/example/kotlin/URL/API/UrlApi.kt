@@ -1,5 +1,6 @@
 package com.example.kotlin.URL.API
 
+import com.example.kotlin.URL.UrlConfig
 import com.example.kotlin.URL.application.UrlService
 import com.example.kotlin.URL.domain.Url
 import com.example.kotlin.URL.dto.UrlDto
@@ -15,7 +16,9 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @Log4j2
-class UrlApi(private val urlService: UrlService) {
+class UrlApi(
+    private val urlService: UrlService,
+    private val urlConfig: UrlConfig,) {
 
     @GetMapping("{uuid}")
     fun redirect(@PathVariable("uuid") uuid: String, res : HttpServletResponse): Unit {
@@ -24,10 +27,9 @@ class UrlApi(private val urlService: UrlService) {
     }
 
     @PostMapping
-    fun createUrlShort(@RequestBody urlDto : UrlDto) : String {
+    fun createUrlShort(@RequestBody urlDto : UrlDto) : UrlDto? {
 
         var url = urlService.createUrl(urlDto);
-        print(url);
-        return "hello world";
+        return url.toUrlDto(urlConfig.url);
     }
 }

@@ -1,5 +1,6 @@
 package com.example.kotlin.URL.application
 
+import com.example.kotlin.URL.UrlConfig
 import com.example.kotlin.URL.domain.Url
 import com.example.kotlin.URL.dto.UrlDto
 import com.example.kotlin.URL.repository.UrlRepository
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class UrlService(
-    private val urlRepository: UrlRepository
+    private val urlRepository: UrlRepository,
 ) {
 
     @Transactional

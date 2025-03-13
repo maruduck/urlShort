@@ -1,5 +1,6 @@
 package com.example.kotlin.URL.domain
 
+import com.example.kotlin.URL.UrlConfig
 import com.example.kotlin.URL.dto.UrlDto
 import jakarta.persistence.*
 
@@ -13,5 +14,9 @@ data class Url (
 
     fun createUUID() {
         this.uuid = id?.toString(36);
+    }
+
+    fun toUrlDto(url: String) : UrlDto? {
+        return uuid?.let { UrlDto("$url/$it")};
     }
 }
