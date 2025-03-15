@@ -14,6 +14,9 @@ class UrlService(
 
     @Transactional
     fun createUrl(urlDto: UrlDto) : Url {
+        var check: Url? = urlRepository.findByUrl(urlDto.url);
+        check?.let { return it };
+
         var savedUrl = urlRepository.save(urlDto.toEntity());
         savedUrl.createUUID();
         return savedUrl;

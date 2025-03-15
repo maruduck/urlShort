@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository
 interface UrlRepository : CrudRepository<Url, Long> {
 
     fun findByUuid(uuid: String) : Url?;
+    fun findByUrl(url: String): Url?;
 }
